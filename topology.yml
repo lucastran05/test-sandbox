@@ -16,7 +16,7 @@ hosts:
 routers:
   - name: base-router
     base_box:
-      image: debian-11
+      image: debian-12-x86_64
       mgmt_user: debian
     flavor: standard.small
 
@@ -37,3 +37,5 @@ router_mappings:
   - router: base-router
     network: base-net
     ip: 17.19.0.1
+
+groups: []
