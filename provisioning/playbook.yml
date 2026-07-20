@@ -1,0 +1,16 @@
+---
+- name: Create lab user
+  hosts: all
+  become: true
+
+  vars:
+    username: kypo
+    password: kypo
+
+  tasks:
+    - name: Create user
+      user:
+        name: "{{ username }}"
+        shell: /bin/bash
+        create_home: yes
+        password: "{{ password | password_hash('sha512') }}"
