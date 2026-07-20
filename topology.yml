@@ -1,15 +1,25 @@
 name: small-sandbox
+
 hosts:
   - name: server
     base_box:
       image: debian-11
       mgmt_user: debian
     flavor: standard.small
+
   - name: client
     base_box:
       image: debian-11
       mgmt_user: debian
     flavor: standard.small
+
+routers:
+  - name: base-router
+    base_box:
+      image: debian-11
+      mgmt_user: debian
+    flavor: standard.small
+
 networks:
   - name: base-net
     cidr: 17.19.0.0/24
@@ -22,3 +32,8 @@ net_mappings:
   - host: client
     network: base-net
     ip: 17.19.0.20
+
+router_mappings:
+  - router: base-router
+    network: base-net
+    ip: 17.19.0.1
